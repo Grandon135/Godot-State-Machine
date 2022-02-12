@@ -11,7 +11,7 @@ func enter(host : StateMachine):
 
 func update(host: StateMachine, delta):
 	.update(host, delta)
-	print(host._current_state.name)
+	#print(host._current_state.name)
 	if(axis_input.x > 0):
 		host.velocity.x = run_speed
 		#animate sprite flip	
@@ -24,6 +24,7 @@ func update(host: StateMachine, delta):
 	var collision = host.body.move_and_slide_with_snap(host.velocity, Vector2.DOWN, Vector2.UP)
 	if(abs(host.velocity.x) < idle_threshold):
 		emit_signal("finished", "Idle")
+		print("State Change to Idle")
 
 func handle_input(host: StateMachine, input : Input):
 	.handle_input(host, input)

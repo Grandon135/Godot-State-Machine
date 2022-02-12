@@ -1,23 +1,24 @@
 extends './inAir.gd'
 
-func enter(host : StateMachine):
-    #Set Animated Sprite
-    pass
+export (float) var gravity = 30
+export (float) var jump_power = -100
 
-func update(host: StateMachine, delta):
-	.update(host, delta)
-	print(host._current_state.name)
+func enter(host):
+	pass
 
-	if(host.body.is_on_floor() && host.velocity == Vector2.ZERO):
-		emit_signal("finished", "Idle")
-	elif(host.body.is_on_floor()):
+func update(host, delta):
+	host.velocity.y += gravity * delta
+
+	if(host.body.is_on_floor()):
 		emit_signal("finished", "Run")
-	else:
-		#apply Gravity
-		pass
+		print("Change State to Run")
 
-func handle_input(host: StateMachine, input : Input):
-    .handle_input(host, input)
+	host.body.move_and_slide(host.velocity, Vector2.UP)
 
-func exit(host: StateMachine):
-    pass
+func handle_input(host, input: Input):
+	if(input.is_action_just_pressed("jump")):
+		host.velocity.y = jump_power
+	
+func exit(host):
+	pass
+	

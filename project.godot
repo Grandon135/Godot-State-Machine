@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/State Machine/StateMachine.gd"
 }, {
-"base": "Reference",
+"base": "KinematicBody2D",
 "class": "StateMachineCharacter",
 "language": "GDScript",
 "path": "res://Scripts/State Machine/StateMachineCharacter.gd"

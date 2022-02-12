@@ -25,7 +25,7 @@ func _ready():
 			push_error("StateMachine child " + child.name + " is not a state.")
 		
 		_state_stack.push_front(_state_map[default_state])
-		_current_state = _state_stack[0]
+		#_current_state = _state_stack[0]
 		change_state(default_state)
 
 func add_state_to_map(state : State):
